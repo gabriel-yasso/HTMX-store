@@ -1,0 +1,21 @@
+<section class="cards-section" id="cards-section">
+  <div class="container">
+    <h2 class="special-heading">Portfolio</h2>
+    <p>If you do it right, it will last forever.</p>
+    <div class="cards-grid">
+      {{#each productsArray as |product|}}
+        <div class="card">
+          <img
+            src="http://localhost:5834/products/image/{{product._id}}"
+            alt="image"
+          />
+          <div class="info">
+            <h3>{{product.title}}</h3>
+            <p>Body: {{product.body}}</p>
+            <h4>price:{{product.price}}</h4>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</section>

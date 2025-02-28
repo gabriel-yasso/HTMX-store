@@ -1,0 +1,39 @@
+<header>
+  <div class="container">
+    <img class="logo" src="images/logo.png" alt="logo" />
+    <div class="links" style="cursor: pointer;">
+      <span class="icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+      <ul>
+        <li><a
+            hx-get="/landing"
+            hx-target="section"
+            hx-swap="outerHTML"
+            style="cursor: pointer;"
+          >Home</a></li>
+        <li><a
+            hx-get="/products"
+            hx-target="section"
+            hx-swap="outerHTML"
+            style="cursor: pointer;"
+          >Products</a></li>
+        <li><a
+            hx-get="/about"
+            hx-target="section"
+            hx-swap="outerHTML"
+            style="cursor: pointer;"
+          >About</a></li>
+          <li><a
+            hx-get="/contact"
+            hx-target="section"
+            hx-swap="outerHTML"
+            style="cursor: pointer;"
+          >Contact</a></li>
+
+      </ul>
+    </div>
+  </div>
+</header>
