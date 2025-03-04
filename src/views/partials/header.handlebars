@@ -21,12 +21,18 @@
             style="cursor: pointer;"
           >Products</a></li>
         <li><a
+            hx-get="/product-form"
+            hx-target="section"
+            hx-swap="outerHTML"
+            style="cursor: pointer;"
+          >Add Product</a></li>
+        <li><a
             hx-get="/about"
             hx-target="section"
             hx-swap="outerHTML"
             style="cursor: pointer;"
           >About</a></li>
-          <li><a
+        <li><a
             hx-get="/contact"
             hx-target="section"
             hx-swap="outerHTML"

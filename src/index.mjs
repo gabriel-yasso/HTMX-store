@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import "dotenv/config"; // thi package is not needed starting from node version 20.6.0 (I am using an older version)
+import "dotenv/config"; // this package is not needed starting from node version 20.6.0 (I am using an older version)
 import { engine } from "express-handlebars";
 import path from "path";
 import url from "url";
