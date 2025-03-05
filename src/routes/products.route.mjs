@@ -15,5 +15,6 @@ route.post(
 route.get("/products/image/:id", productsController.getProductImage);
 
 route.get("/products", productsController.getProducts);
+route.delete("/products/:id", productsController.removeProduct)
 
 export default route;

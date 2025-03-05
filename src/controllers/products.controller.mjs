@@ -47,8 +47,20 @@ const getProducts = async (req, res) => {
   }
 };
 
+const removeProduct = async (req, res) => {
+  try {
+    const product = Product.findById(req.params.id);
+    if (!product) return;
+    await Product.findByIdAndDelete(req.params.id);
+    res.send("");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export default {
   getProducts,
   createProduct,
   getProductImage,
+  removeProduct,
 };

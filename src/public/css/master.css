@@ -1,24 +1,23 @@
 /* Start Variables */
 :root {
-  --main-color--: #10cab7 ;
-  --section-padding--:60px ;
-  --section-background--:#f6f6f6 ;
-  --secondary-color--: #2c4755 ;
+  --main-color--: #10cab7;
+  --section-padding--: 60px;
+  --section-background--: #f6f6f6;
+  --secondary-color--: #2c4755;
 }
 /* End Variables */
 
-
 /* Start Global Rules */
 * {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 html {
   scroll-behavior: smooth;
 }
 body {
-    font-family: 'Work Sans', sans-serif;
-   /* these next 4 lines are for when everything is removed except the header and the footer */
+  font-family: "Work Sans", sans-serif;
+  /* these next 4 lines are for when everything is removed except the header and the footer */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -26,55 +25,55 @@ body {
 }
 
 .container {
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-left: auto;
-    margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
 }
 /* Small */
 @media (min-width: 768px) {
-    .container {
-      width: 750px;
-    }
+  .container {
+    width: 750px;
   }
+}
 /* Medium */
 @media (min-width: 992px) {
-   .container {
-      width: 970px;
-    }
+  .container {
+    width: 970px;
+  }
 }
 /* Large */
 @media (min-width: 1200px) {
-   .container {
-      width: 1170px;
-    }
+  .container {
+    width: 1170px;
+  }
 }
 /* End Global Rules */
 
 /* start component */
+.special-heading {
+  color: #ebeced;
+  font-size: 100px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -3px;
+  text-align: center;
+}
+.special-heading + p {
+  color: #777;
+  margin: -30px 0 0;
+  text-align: center;
+  font-size: 20px;
+}
+@media (max-width: 767px) {
   .special-heading {
-    color: #ebeced;
-    font-size: 100px;
-    font-weight: 800;
-    margin: 0;
-    letter-spacing: -3px;
-    text-align: center;
+    font-size: 60px;
   }
-  .special-heading + p {
-    color: #777;
-    margin: -30px 0 0;
-    text-align: center;
-    font-size: 20px;
-  }
-  @media (max-width:767px) {
-    .special-heading {
-      font-size: 60px;
-    }
 
-    .special-heading + p {
-      margin: -20px 0 0;
-    }
+  .special-heading + p {
+    margin: -20px 0 0;
   }
+}
 /* end componenet */
 
 /* start header */
@@ -84,7 +83,7 @@ header {
 header .container {
   display: flex;
   justify-content: space-between;
-  align-items: center; 
+  align-items: center;
   /* I noticed that display: flex ruins the aspect ratio of the height of an image.
      but align-items:center or end or start corrects the height.
      also paddings top and bottom can fix it. */
@@ -130,8 +129,9 @@ header .links ul::after {
   content: "";
   position: absolute;
   background-color: transparent;
-  border: 10px solid transparent; 
-  top: -20px; right: 5px; 
+  border: 10px solid transparent;
+  top: -20px;
+  right: 5px;
   border-bottom: 10px solid #f6f6f6;
 }
 header .links:hover ul {
@@ -161,7 +161,8 @@ section.landing {
 }
 .landing .intro-text {
   position: absolute;
-  top: 50%;left: 50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   width: 300px;
@@ -178,110 +179,6 @@ section.landing {
 }
 /* end landing section */
 
-/* start features */
-.features {
-  padding-top: var(--section-padding--);
-  padding-bottom: var(--section-padding--);
-  background-color: var(--section-background--);
-}
-.features .container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(300px, 1fr));
-  gap: 20px;
-}
-.features .feat {
-  padding: 20px;
-  text-align: center;
-}
-.features .feat i {
-  display: block;
-  font-size: 40px;
-  color: var(--main-color--);
-}
-.features h3 {
-  display: block;
-  font-weight:800 ;
-}
-.features p {
-  font-size: 19px;
-  line-height: 1.8;
-  color: #777;
-  height: 100px;
-  overflow: hidden;
-  max-width: 200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-/* end features */
-
-/* start services */
-.services {
-  padding-top: var(--section-padding--);
-  padding-bottom: var(--section-padding--);
-}
-.services-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 30px;
-  margin-top: 100px;
-}
-.services .serv {
-  display: flex;
-  height: 232px;
-}
-@media (max-width: 767px) {
-  .services .serv{
-    flex-direction: column;
-    text-align: center;
-  }
-}
-.services .serv i {
-  color: var(--main-color--);
-  flex-basis: 60px;
-  /* flex-basis because when the flex direction is set to column -is in the media- it will work as height instead of width */
-}
-.serv .text {
-  flex-grow: 1;
-  flex-basis: 0%;
-  /* it is zero because the actual width is taken from the flex-grow:1 but you can specify it and remove flex-grow but is better like this */
-  /* you can also just use flex:1; to account for both the flex-grow:1; and flex-basis:0%; */
-  /* giving this second child in the flex box a flex basis properity was important to make it work in the first child */
-  /* actully giving normal width would work aswell but you need to count for the accurate width when media cicks in */
-  /* also the flex basis will work in the first child with flex-wrap:wrap as the reason for it not working is that 
-  the auto width of the othe flex child is taking priority */
-}
-.serv h3 {
-  margin-top: 0;
-}
-.serv p {
-  color: #444;
-  line-height: 1.8;
-  font-weight: 300;
-}
-.services img {
-  width: 70%;
-}
-.services .image {
-  position: relative;
-  text-align: center;
-}
-.services .image::after {
-content: "";
-position: absolute;
-right: 0; top:-40px;
-width: 100px;
-height: calc(100% + 80px);
-background-color: var(--secondary-color--);
-z-index: -1;
-}
-@media (max-width: 1199px) {
-  .services .col:last-child {
-    display: none;
-  }
- /* I noticed after I made the div disappear that there is an empty grid column which disappeard after I increased the gap value */
-}
-/* end services */
-
 /* start cards-section */
 .cards-section {
   padding-top: var(--section-padding--);
@@ -296,6 +193,12 @@ z-index: -1;
 }
 .cards-grid .card {
   background-color: white;
+  position: relative;
+}
+.cards-section .d-e {
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 .cards-section img {
   max-width: 100%;
@@ -323,7 +226,7 @@ z-index: -1;
   justify-content: space-between;
   margin-top: 100px;
 }
-@media (max-width:991px) {
+@media (max-width: 991px) {
   .about-content {
     flex-direction: column;
     text-align: center;
@@ -334,7 +237,7 @@ z-index: -1;
   width: 250px;
   position: relative;
 }
-@media (max-width:991px) {
+@media (max-width: 991px) {
   .about-content .image {
     align-self: center;
     margin-bottom: 60px;
@@ -347,7 +250,8 @@ z-index: -1;
 .about-content .image::before {
   content: "";
   position: absolute;
-  top: -40px; left: -20px;
+  top: -40px;
+  left: -20px;
   width: 100px;
   height: calc(100% + 80px);
   background-color: #ebeced;
@@ -356,14 +260,15 @@ z-index: -1;
 .about-content .image::after {
   content: "";
   position: absolute;
-  top: -35px; right: -155px;
+  top: -35px;
+  right: -155px;
   width: 50%;
   height: calc(100% - 80px);
   border-left: 80px solid var(--main-color--);
   border-bottom: 80px solid var(--main-color--);
   z-index: -1;
 }
-@media (max-width:991px) {
+@media (max-width: 991px) {
   .about-content .image::before,
   .about-content .image::after {
     display: none;
@@ -396,23 +301,23 @@ z-index: -1;
 }
 .contact-content {
   padding-top: 60px;
-  padding-bottom:60px ;
+  padding-bottom: 60px;
   text-align: center;
 }
 .contact-content p {
-color: var(--secondary-color--);
-font-size: 35px;
-font-weight: 800;
-letter-spacing: -2px;
-margin-bottom: 15px;
+  color: var(--secondary-color--);
+  font-size: 35px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  margin-bottom: 15px;
 }
 .contact-content a {
-color: var(--main-color--);
-text-decoration: none;
-font-size: 35px;
-font-weight: 800;
+  color: var(--main-color--);
+  text-decoration: none;
+  font-size: 35px;
+  font-weight: 800;
 }
-@media (max-width:767px) {
+@media (max-width: 767px) {
   .contact-content p,
   .contact-content a {
     font-size: 25px;
@@ -488,3 +393,81 @@ footer span {
   font-weight: bold;
 }
 /* end footer */
+
+/* start animations */
+.shake-horizontal:hover {
+	-webkit-animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+	        animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+/* ----------------------------------------------
+ * Generated by Animista on 2025-3-5 6:6:43
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation shake-horizontal
+ * ----------------------------------------
+ */
+ @-webkit-keyframes shake-horizontal {
+  0%,
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70% {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+  }
+  20%,
+  40%,
+  60% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+  }
+  80% {
+    -webkit-transform: translateX(8px);
+            transform: translateX(8px);
+  }
+  90% {
+    -webkit-transform: translateX(-8px);
+            transform: translateX(-8px);
+  }
+}
+@keyframes shake-horizontal {
+  0%,
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70% {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+  }
+  20%,
+  40%,
+  60% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+  }
+  80% {
+    -webkit-transform: translateX(8px);
+            transform: translateX(8px);
+  }
+  90% {
+    -webkit-transform: translateX(-8px);
+            transform: translateX(-8px);
+  }
+}
+
+
+
+/* end animations */

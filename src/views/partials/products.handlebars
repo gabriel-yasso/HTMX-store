@@ -5,6 +5,15 @@
     <div class="cards-grid">
       {{#each productsArray as |product|}}
         <div class="card">
+          <div class="d-e">
+            <i
+              class="fa-solid fa-trash shake-horizontal "
+              style="color: #f10909; cursor:pointer;"
+              hx-delete="products/{{product._id}}"
+              hx-target="closest .card"
+              hx-swap="outerHTML"
+            ></i>
+          </div>
           <img
             {{!-- src="http://localhost:5834/products/image/{{product._id}}" --}}
             {{! the previous uri should be changed on deployment to this next one  }}
