@@ -41,7 +41,7 @@ const getProducts = async (req, res) => {
     if (productsArray.length === 0) {
       res.status(404).send("no products found");
     }
-    res.render("partials/products", { productsArray });
+    res.render("partials/products", { productsArray, title: "Products" });
   } catch (err) {
     console.log(err);
   }

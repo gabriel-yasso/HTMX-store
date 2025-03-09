@@ -26,6 +26,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(express.urlencoded({ extended: false }));
 
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "handlebars");
 app.engine(
   "handlebars",
   engine({
@@ -36,30 +38,28 @@ app.engine(
     },
   })
 );
-app.set("view engine", "handlebars");
-app.set("views", "./src/views");
 
 app.use(productsRoute);
 app.use(productFormRoute);
 
 app.get("/", (req, res) => {
-  res.render("home");
+  res.render("home", { title: "Home" });
 });
 
 app.get("/landing", (req, res) => {
-  res.render("partials/landing");
+  res.render("partials/landing", { title: "Home" });
 });
 
 app.get("/about", (req, res) => {
-  res.render("partials/about");
+  res.render("partials/about", { title: "About" });
 });
 
 app.get("/contact", (req, res) => {
-  res.render("partials/contact");
+  res.render("partials/contact", { title: "Contact" });
 });
 
 app.use((req, res) => {
-  res.status(404).render("partials/404route");
+  res.status(404).render("partials/404route", { title: "Not Found" });
 });
 
 app.listen(port, () => {
