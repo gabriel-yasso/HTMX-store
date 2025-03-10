@@ -153,7 +153,7 @@ header .links ul a {
 header .links ul a:hover {
   margin-left: 5px;
 }
-header .links ul a:not(ul li:last-child a) {
+header .links ul li:not(:last-child) a {
   border-bottom: 1px solid #ddd;
 }
 /* end header */

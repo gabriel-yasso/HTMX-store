@@ -53,7 +53,10 @@ function showMouseleave(e) {
 }
 
 (function initialize() {
-  headerMenuIcon.addEventListener("click", toggleVisibilityClick);
-  headerMenuIcon.addEventListener("mouseover", showMouseover);
-  headerMenuIcon.addEventListener("mouseleave", showMouseleave);
+  if (headerMenuIcon) {
+    headerMenuIcon.addEventListener("click", toggleVisibilityClick);
+    headerMenuIcon.addEventListener("mouseover", showMouseover);
+    headerMenuIcon.addEventListener("mouseleave", showMouseleave);
+  }
+  // Note: the if condition because if the page does not have the Icon like in a 404 page we don't get an error.
 })();
