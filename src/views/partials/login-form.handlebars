@@ -1,0 +1,30 @@
+<section>
+  <div class="form-container">
+    {{#if addProductMsg}}
+      <div style="color: red;">to add products login first</div>
+    {{/if}}
+    <h1>Login</h1>
+    <form hx-post="/login" hx-target="section" hx-swap="outerHTML">
+      <label for="username">username</label>
+      <input type="text" id="username" name="username" required />
+
+      <label for="password">password</label>
+      <input type="text" id="password" name="password" required />
+
+      {{#if isInvalid}}
+        <div style="color: red;">Invalid username or password</div>
+      {{/if}}
+
+      <button class="form-button" type="submit">Login</button>
+    </form>
+    <div>
+      You don't have an account?
+      <a
+        hx-get="/register-form"
+        hx-target="section"
+        hx-swap="outerHTML"
+        style="cursor: pointer; color:blue"
+      >register</a>
+    </div>
+  </div>
+</section>

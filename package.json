@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./src/index.mjs",
-    "dev": "nodemon ./src/index.mjs"
+    "dev": "nodemon ./src/index.mjs",
+    "tailwind": "npx @tailwindcss/cli -i ./src/public/css/tailwind.input.css -o ./src/public/css/tailwind.output.css --watch"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-handlebars": "^8.0.1",
+    "express-session": "^1.18.1",
     "mongoose": "^8.10.1",
     "multer": "^1.4.5-lts.1",
     "tailwindcss": "^4.0.12"

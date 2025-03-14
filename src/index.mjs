@@ -4,8 +4,13 @@ import "dotenv/config"; // this package is not needed starting from node version
 import { engine } from "express-handlebars";
 import path from "path";
 import url from "url";
-import productsRoute from "./routes/products.route.mjs";
-import productFormRoute from "./routes/productForm.route.mjs";
+import session from "express-session";
+import productsRouter from "./routes/products.router.mjs";
+import productFormRouter from "./routes/productForm.router.mjs";
+import usersRouter from "./routes/users.router.mjs";
+import registerFormRouter from "./routes/registerForm.router.mjs";
+import loginRouter from "./routes/login.router.mjs";
+import loginFormRouter from "./routes/loginForm.router.mjs";
 
 const port = process.env.PORT || 5834;
 const app = express();
@@ -39,8 +44,23 @@ app.engine(
   })
 );
 
-app.use(productsRoute);
-app.use(productFormRoute);
+app.use(
+  session({
+    secret: "secret",
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+      maxAge: 1000 * 60 * 60,
+    },
+  })
+);
+
+app.use(productsRouter);
+app.use(productFormRouter);
+app.use(usersRouter);
+app.use(registerFormRouter);
+app.use(loginRouter);
+app.use(loginFormRouter);
 
 app.get("/", (req, res) => {
   res.render("home", { title: "Home" });

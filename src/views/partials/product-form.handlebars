@@ -3,18 +3,18 @@
     <h1>upload a new product</h1>
     <form
       hx-post="/products"
-      hx-target=".form-container"
+      hx-target="section"
       hx-swap="outerHTML"
       enctype="multipart/form-data"
       {{! if not added only the text will be sent to the server but the image wont, which will cause an error }}
     >
-      <label for="full-name">Title</label>
+      <label for="title">Title</label>
       <input type="text" id="title" name="title" required />
 
-      <label for="username">Body</label>
+      <label for="body">Body</label>
       <input type="text" id="body" name="body" required />
 
-      <label for="email">Price</label>
+      <label for="price">Price</label>
       <input type="text" id="price" name="price" required />
 
       <label for="productImage">Upload an image:</label>

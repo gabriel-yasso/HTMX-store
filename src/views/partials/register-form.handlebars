@@ -1,0 +1,30 @@
+<section>
+  <div class="form-container">
+    <h1>Register</h1>
+    <form hx-post="/users" hx-target="section" hx-swap="outerHTML">
+      <label for="username">username</label>
+      <input type="text" id="username" name="username" required />
+
+      {{#if usernameTaken}}
+        <div style="color: red; margin-top: -20px; margin-bottom: 10px;">
+          username alread exists
+        </div>
+      {{/if}}
+
+      <label for="password">password</label>
+      <input type="text" id="password" name="password" required />
+
+      <button class="form-button" type="submit">register</button>
+    </form>
+    <div>
+      You already have an account?
+      <a
+        hx-get="/login-form"
+        hx-target="section"
+        hx-swap="outerHTML"
+        style="cursor: pointer; color:blue"
+      >login</a>
+      </div>
+  </div>
+  </div>
+</section>

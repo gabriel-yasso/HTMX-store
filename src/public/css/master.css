@@ -93,7 +93,9 @@ header .logo {
 }
 header .links {
   position: relative;
+  margin-left: 15px;
 }
+
 header .links:hover .icon span:nth-child(2) {
   width: 100%;
 }
