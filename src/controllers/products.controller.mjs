@@ -41,7 +41,12 @@ const getProducts = async (req, res) => {
     if (productsArray.length === 0) {
       res.status(404).send("no products found");
     }
-    res.render("partials/products", { productsArray, title: "Products" });
+    let isAdmin = req.session.user ? req.session.user.isAdmin : false;
+    res.render("partials/products", {
+      productsArray,
+      adminLogedIn: isAdmin,
+      title: "Products",
+    });
   } catch (err) {
     console.log(err);
   }
@@ -49,6 +54,9 @@ const getProducts = async (req, res) => {
 
 const removeProduct = async (req, res) => {
   try {
+    if (!req.session.user || !req.session.user.isAdmin) {
+      return res.render("partials/login-form", { addDeleteMsg: true });
+    }
     const product = Product.findById(req.params.id);
     if (!product) return;
     await Product.findByIdAndDelete(req.params.id);

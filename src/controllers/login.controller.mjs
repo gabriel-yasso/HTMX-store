@@ -6,11 +6,11 @@ export const login = async (req, res) => {
     const foundUser = await User.findOne({ username });
 
     if (!foundUser || foundUser.password !== password) {
-      return res.render("partials/login-form",{isInvalid: true});
+      return res.render("partials/login-form", { isInvalid: true });
     }
 
     req.session.user = foundUser;
-    return res.render("partials/landing");
+    return res.render("home", { logedIn: req.session.user });
   } catch (err) {
     console.error(err);
     return res.status(500).send("Internal server error");

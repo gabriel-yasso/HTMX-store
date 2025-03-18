@@ -1,23 +1,26 @@
 <section class="cards-section" id="cards-section">
   <div class="container">
     <h2 class="special-heading">Products</h2>
-    <p>If you do it right, it will last forever.</p>
+    <p>If you do it right, it will last forever</p>
     <div class="cards-grid">
       {{#each productsArray as |product|}}
-        <div class="card">
-          <div class="d-e">
+        <div class="card" hx-target="section" hx-swap="outerHTML">
+          <div
+            class="d-e"
+            {{#unless ../adminLogedIn}}
+            style="display: none;"
+            {{/unless}}
+          >
             <i
-              class="fa-solid fa-trash shake-horizontal "
+              class="fa-solid fa-trash"
               style="color: #f10909; cursor:pointer;"
               hx-delete="products/{{product._id}}"
               hx-target="closest .card"
               hx-swap="outerHTML"
+              hx-confirm="are you sure you want to delete this product?"
             ></i>
           </div>
-          <img
-            src="/products/image/{{product._id}}"
-            alt="image"
-          />
+          <img src="/products/image/{{product._id}}" alt="image" />
           <div class="info">
             <h3>{{product.title}}</h3>
             <p>Body: {{product.body}}</p>

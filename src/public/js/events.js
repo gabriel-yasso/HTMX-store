@@ -60,3 +60,24 @@ function showMouseleave(e) {
   }
   // Note: the if condition because if the page does not have the Icon like in a 404 page we don't get an error.
 })();
+// _______________________________________________________________________________________________________________
+// using sweatalwert2 with hx-confirm instead of the default confirm popup
+
+document.addEventListener("htmx:confirm", function (e) {
+  if (!e.target.hasAttribute("hx-confirm")) return;
+  e.preventDefault();
+  e.stopPropagation();
+  e.stopImmediatePropagation();
+
+  Swal.fire({
+    title: "confirm",
+    text: `${e.detail.question}`,
+    showCancelButton: true,
+    confirmButtonText: "Delete",
+    confirmButtonColor: "red",
+  }).then(function (result) {
+    if (result.isConfirmed) {
+      e.detail.issueRequest(true);
+    }
+  });
+});

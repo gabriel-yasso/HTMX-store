@@ -1,0 +1,21 @@
+<section class="users">
+  {{#each usersArray as |user|}}
+    <div>{{user.username}}</div>
+    <div>admin: {{user.isAdmin}}</div>
+    <label for="{{user._id}}"> change admin status: </label><br />
+    <div class="select-admin">
+      <select
+        hx-patch="/users/role/{{user._id}}"
+        hx-target="section"
+        hx-swap="outerHTML"
+        name="admin"
+        id="{{user._id}}"
+      >
+        <option disabled selected style="display: none;">select</option>
+        <option value="0"> false </option>
+        <option value="1"> true </option>
+      </select>
+    </div>
+    <hr />
+  {{/each}}
+</section>

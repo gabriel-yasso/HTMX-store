@@ -63,7 +63,7 @@ app.use(loginRouter);
 app.use(loginFormRouter);
 
 app.get("/", (req, res) => {
-  res.render("home", { title: "Home" });
+  res.render("home", { title: "Home", logedIn: req.session.user });
 });
 
 app.get("/landing", (req, res) => {
