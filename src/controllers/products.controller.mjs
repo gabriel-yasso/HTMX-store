@@ -55,7 +55,10 @@ const getProducts = async (req, res) => {
 const removeProduct = async (req, res) => {
   try {
     if (!req.session.user || !req.session.user.isAdmin) {
-      return res.render("partials/login-form", { addDeleteMsg: true });
+      return res.render("partials/login-form", {
+        contextMsg:
+          "to delete a product you have to login with an admin account",
+      });
     }
     const product = Product.findById(req.params.id);
     if (!product) return;

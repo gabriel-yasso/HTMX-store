@@ -7,7 +7,7 @@ const createUser = async (req, res) => {
       password: req.body.password,
     });
     await newUser.save();
-    res.render("partials/register-form");
+    res.render("partials/login-form");
   } catch (err) {
     if (err.code == 11000) {
       return res.render("partials/register-form", { usernameTaken: true });
@@ -18,6 +18,9 @@ const createUser = async (req, res) => {
 
 const allUsers = async (req, res) => {
   try {
+    if (!req.session.user || !req.session.user.isAdmin || req.session.user.username != "gabriel") {
+      return res.render("partials/login-form",{contextMsg: "You have to login with a manager account"});
+    }
     const usersArray = await User.find({});
     res.render("partials/users", { usersArray });
   } catch (err) {

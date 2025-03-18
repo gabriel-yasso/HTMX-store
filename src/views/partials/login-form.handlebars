@@ -1,13 +1,10 @@
 <section>
   <div class="form-container">
-    {{#if addProductMsg}}
-      <div style="color: red;">to add products login first</div>
-    {{/if}}
-    {{#if addDeleteMsg}}
-      <div style="color: red;">to delete a product you have to login with an admin account</div>
+    {{#if contextMsg}}
+      <div style="color: red;">{{contextMsg}}</div>
     {{/if}}
     <h1>Login</h1>
-    <form hx-post="/login" hx-target="body" hx-swap="innerHTML">
+    <form hx-post="/auth/login" hx-target="body" hx-swap="innerHTML">
       <label for="username">username</label>
       <input type="text" id="username" name="username" required />
 

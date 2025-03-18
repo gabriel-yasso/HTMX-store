@@ -9,7 +9,7 @@ import productsRouter from "./routes/products.router.mjs";
 import productFormRouter from "./routes/productForm.router.mjs";
 import usersRouter from "./routes/users.router.mjs";
 import registerFormRouter from "./routes/registerForm.router.mjs";
-import loginRouter from "./routes/login.router.mjs";
+import loginRouter from "./routes/auth.router.mjs";
 import loginFormRouter from "./routes/loginForm.router.mjs";
 
 const port = process.env.PORT || 5834;

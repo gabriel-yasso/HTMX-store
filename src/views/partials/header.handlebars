@@ -10,7 +10,7 @@
       alt="logo"
       style="cursor: pointer;"
     />
-    <div style="margin: auto;">
+    <div style="margin: auto; display:flex; flex-direction:row; gap:20px">
       {{#if logedIn}}
         <div
           class="avatar"
@@ -22,6 +22,12 @@
             style="width: 24px; border-radius: 50%;"
           />
         </div>
+        <a
+          hx-get="/auth/logout"
+          hx-target="header"
+          hx-swap="outerHTML"
+          style="cursor: pointer; margin-top: 5px;"
+        >logout</a>
       {{/if}}
       {{#unless logedIn}}
         <a
@@ -64,6 +70,12 @@
             hx-swap="outerHTML"
             style="cursor: pointer;"
           >Add Product</a></li>
+          <li><a
+            hx-get="/users"
+            hx-target="section"
+            hx-swap="outerHTML"
+            style="cursor: pointer;"
+          >users</a></li>
         <li><a
             hx-get="/about"
             hx-target="section"
