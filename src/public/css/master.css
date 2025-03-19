@@ -342,49 +342,133 @@ section.landing {
 /* end contact */
 
 /* start product-form */
-
 .form-container {
-  flex: 1;
-  padding: 40px;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
 }
 
-h1 {
+
+.form-container h1 {
+  text-align: center;
   font-size: 24px;
-  margin-bottom: 10px;
-}
-
-p {
+  color: #333;
   margin-bottom: 20px;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-}
 
-label {
+.form-container label {
+  display: block;
+  font-size: 14px;
+  color: #555;
   margin-bottom: 5px;
-  font-weight: bold;
 }
 
-input[type="text"] {
+
+.form-container input[type="text"] {
+  width: 100%;
   padding: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-size: 14px;
+  transition: border-color 0.3s ease-in-out;
 }
 
-.form-button {
+.form-container input[type="text"]:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+.form-container .form-button {
+  width: 100%;
   padding: 10px;
-  background: #ff758c;
-  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007BFF;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }
 
-.form-button:hover {
-  background: #ff7eb3;
+.form-container .form-button:hover {
+  background-color: #0056b3;
+}
+
+.form-container div[style*="color: red"] {
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: red;
+}
+
+.form-container div {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.form-container div a {
+  color: #007BFF;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+.form-container div a:hover {
+  color: #0056b3;
+}
+
+.form-container input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: border-color 0.3s ease-in-out;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.form-container input[type="file"]:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+.form-container input[type="file"]::file-selector-button {
+  font-size: 14px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.form-container input[type="file"]::file-selector-button:hover {
+  background-color: #0056b3;
+}
+
+
+@media (max-width: 480px) {
+  .form-container {
+    padding: 15px;
+  }
+
+  .form-container h1 {
+    font-size: 20px;
+  }
+
+  .form-container .form-button {
+    font-size: 14px;
+  }
 }
 
 /* end product form */
@@ -403,47 +487,7 @@ footer span {
 }
 /* end footer */
 
-/* start admin dropdown */
-/* .select-admin select {
-  background-color: #0563af;
-  color: white;
-  padding: 2px;
-  width: auto;
-  border: none;
-  font-size: 20px;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-  -webkit-appearance: button;
-  appearance: button;
-  outline: none;
-}
-
-.select-admin::before {
-  content: "\f13a";
-  font-family: FontAwesome;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 20%;
-  height: 100%;
-  text-align: center;
-  font-size: 28px;
-  line-height: 45px;
-  color: rgba(255, 255, 255, 0.5);
-  background-color: rgba(255, 255, 255, 0.1);
-  pointer-events: none;
-}
-
-.select-admin:hover::before {
-  color: rgba(255, 255, 255, 0.6);
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.select-admin select option {
-  padding: 30px;
-} */
-/* end admin dropdown */
-
-
+/* users partial */
 section.users {
   font-family: Arial, sans-serif;
   margin: 20px;
@@ -478,3 +522,4 @@ section.users hr {
   background: #ddd;
   margin: 15px 0;
 }
+/* users partial */
