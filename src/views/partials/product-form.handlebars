@@ -28,5 +28,14 @@
 
       <button class="form-button" type="submit">Add</button>
     </form>
+    {{#if contextMsg}}
+      <a
+        hx-get="/products"
+        preload="preload:init"
+        style="visibility: hidden;"
+      ></a> {{!-- this anchor tag is just for preloading the products route  --}}
+      
+      <div style="color:lime; font:bold">{{contextMsg}}</div>
+    {{/if}}
   </div>
 </section>

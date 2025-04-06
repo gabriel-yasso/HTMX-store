@@ -10,6 +10,9 @@ export const login = async (req, res) => {
     }
 
     req.session.user = foundUser;
+
+    res.set("Clear-Site-Data", "\"cache\""); // instead we can try adding the username to the ETag along with timestamps
+
     return res.render("home", { logedIn: req.session.user });
   } catch (err) {
     console.error(err);
@@ -20,8 +23,12 @@ export const login = async (req, res) => {
 export const logout = async (req, res) => {
   try {
     if (req.session.user) {
-      delete req.session.user;
-      return res.render("partials/header");
+      delete req.session;
+      res.clearCookie("connect.sid");
+
+      res.set("Clear-Site-Data", "\"cache\""); // instead we can try adding the username to the ETag along with timestamps
+
+      return res.render("home");
     }
   } catch (err) {
     console.error(err);

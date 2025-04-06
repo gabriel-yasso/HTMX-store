@@ -30,7 +30,11 @@ const allUsers = async (req, res) => {
 
 const defineRole = async (req, res) => {
   try {
-    const updatedUser = await User.findByIdAndUpdate(req.params.id,{$set: {isAdmin: !! +req.body.admin}})
+    if (!req.session.user || !req.session.user.isAdmin || req.session.user.username != "gabriel") {
+      return res.render("partials/login-form",{contextMsg: "You have to login with a manager account"});
+    }
+
+    await User.findByIdAndUpdate(req.params.id,{$set: {isAdmin: !! +req.body.admin}})
     const usersArray = await User.find({});
     res.render("partials/users", { usersArray });
   } catch (err) {

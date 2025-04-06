@@ -5,12 +5,14 @@ import { engine } from "express-handlebars";
 import path from "path";
 import url from "url";
 import session from "express-session";
+// import cors from "cors";
 import productsRouter from "./routes/products.router.mjs";
 import productFormRouter from "./routes/productForm.router.mjs";
 import usersRouter from "./routes/users.router.mjs";
 import registerFormRouter from "./routes/registerForm.router.mjs";
 import loginRouter from "./routes/auth.router.mjs";
 import loginFormRouter from "./routes/loginForm.router.mjs";
+import { Product } from "./models/product.model.mjs";
 
 const port = process.env.PORT || 5834;
 const app = express();
@@ -55,6 +57,8 @@ app.use(
   })
 );
 
+// app.use(cors());
+
 app.use(productsRouter);
 app.use(productFormRouter);
 app.use(usersRouter);
@@ -62,8 +66,9 @@ app.use(registerFormRouter);
 app.use(loginRouter);
 app.use(loginFormRouter);
 
-app.get("/", (req, res) => {
-  res.render("home", { title: "Home", logedIn: req.session.user });
+app.get("/", async (req, res) => {
+  const productsArray = await Product.find(); // for preload links in the head in the main layout.
+  res.render("home", { title: "Home",productsArray ,logedIn: req.session.user });
 });
 
 app.get("/landing", (req, res) => {

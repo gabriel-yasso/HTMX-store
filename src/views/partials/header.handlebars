@@ -24,7 +24,7 @@
         </div>
         <a
           hx-get="/auth/logout"
-          hx-target="header"
+          hx-target="body"
           hx-swap="outerHTML"
           style="cursor: pointer; margin-top: 5px;"
         >logout</a>
@@ -63,6 +63,7 @@
             hx-target="section"
             hx-swap="outerHTML"
             style="cursor: pointer;"
+            preload="preload:init"
           >Products</a></li>
         <li><a
             hx-get="/product-form"
@@ -75,7 +76,7 @@
             hx-target="section"
             hx-swap="outerHTML"
             style="cursor: pointer;"
-          >users</a></li>
+          >Users</a></li>
         <li><a
             hx-get="/about"
             hx-target="section"

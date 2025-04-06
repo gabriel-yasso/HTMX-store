@@ -3,8 +3,9 @@
     <h2 class="special-heading">Products</h2>
     <p>If you do it right, it will last forever</p>
     <div class="cards-grid">
+
       {{#each productsArray as |product|}}
-        <div class="card" hx-target="section" hx-swap="outerHTML">
+        <div class="card">
           <div
             class="d-e"
             {{#unless ../adminLogedIn}}
@@ -20,7 +21,9 @@
               hx-confirm="are you sure you want to delete this product?"
             ></i>
           </div>
-          <img {{!loading="lazy"}} src="/products/image/{{product._id}}" alt="image" />
+          
+          <img loading="lazy" src="/products/image/{{product._id}}" alt="image" />
+
           <div class="info">
             <h3>{{product.title}}</h3>
             <p>Body: {{product.body}}</p>
