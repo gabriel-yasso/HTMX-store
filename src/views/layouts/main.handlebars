@@ -24,13 +24,11 @@
     <script src="js/htmx-ext-preload.min.js" defer></script>
     <script src="/js/sweetalert2.all.min.js" defer></script>
     <script src="js/events.js" defer></script>
-    
+
     <!-- preloading images once on the initial load of the website -->
     {{#each productsArray as |product|}}
-    <link rel="preload" as="image" href="/products/image/{{product._id}}">
+      <link rel="preload" as="image" href="/products/image/{{product._id}}" />
     {{/each}}
-
-    {{!-- <link rel="preload" as="fetch" href="/products" crossorigin="anonymous" /> --}}
 
     <title>{{title}}</title>
   </head>

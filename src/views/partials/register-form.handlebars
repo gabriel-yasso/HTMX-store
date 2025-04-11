@@ -1,7 +1,7 @@
 <section>
   <div class="form-container">
     <h1>Register</h1>
-    <form hx-post="/users" hx-target="section" hx-swap="outerHTML">
+    <form hx-post="/users" hx-target="section" hx-swap="outerHTML" hx-indicator="#main-indicator">
       <label for="username">username</label>
       <input type="text" id="username" name="username" required />
 
@@ -23,6 +23,7 @@
         hx-target="section"
         hx-swap="outerHTML"
         style="cursor: pointer; color:blue"
+        hx-indicator="#main-indicator"
       >login</a>
       </div>
   </div>

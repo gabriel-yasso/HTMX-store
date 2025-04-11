@@ -2,10 +2,13 @@
   <div class="form-container">
     <h1>upload a new product</h1>
     <form
+      id="form"
       hx-post="/products"
       hx-target="section"
       hx-swap="outerHTML"
-      enctype="multipart/form-data"
+      hx-disabled-elt="find button"
+      hx-encoding="multipart/form-data"
+      {{! enctype="multipart/form-data" }}
       {{! if not added only the text will be sent to the server but the image wont, which will cause an error }}
     >
       <label for="title">Title</label>
@@ -26,16 +29,51 @@
         required
       />
 
-      <button class="form-button" type="submit">Add</button>
-    </form>
-    {{#if contextMsg}}
+      <progress id="progress" value="0" max="100"></progress>
+
+      <button class="form-button" type="submit">
+        Add
+        <svg
+          class="htmx-indicator"
+          width="38"
+          height="38"
+          viewBox="0 0 38 38"
+          xmlns="http://www.w3.org/2000/svg"
+          stroke="#fff"
+        >
+          <g fill="none" fill-rule="evenodd">
+            <g transform="translate(1 1)" stroke-width="2">
+              <circle stroke-opacity=".5" cx="18" cy="18" r="18" />
+              <path d="M36 18c0-9.94-8.06-18-18-18">
+                <animateTransform
+                  attributeName="transform"
+                  type="rotate"
+                  from="0 18 18"
+                  to="360 18 18"
+                  dur="1s"
+                  repeatCount="indefinite"
+                />
+              </path>
+            </g>
+          </g>
+        </svg>
+      </button>
+      {{#if contextMsg}}
       <a
         hx-get="/products"
         preload="preload:init"
         style="visibility: hidden;"
-      ></a> {{!-- this anchor tag is just for preloading the products route  --}}
-      
-      <div style="color:lime; font:bold">{{contextMsg}}</div>
+      ></a>
+      {{! this anchor tag is just for preloading the products route  }}
+
+      <div id="product-added" style="color:lime; font:bold;">{{contextMsg}}</div>
     {{/if}}
+    </form>
   </div>
+
+  <script>
+    htmx.on('#form', 'htmx:xhr:progress', function(evt) {
+    htmx.find('#progress').setAttribute('value',
+    evt.detail.loaded/evt.detail.total * 100) });
+  </script>
 </section>

@@ -4,7 +4,12 @@
       <div style="color: red;">{{contextMsg}}</div>
     {{/if}}
     <h1>Login</h1>
-    <form hx-post="/auth/login" hx-target="body" hx-swap="innerHTML">
+    <form
+      hx-post="/auth/login"
+      hx-target="body"
+      hx-swap="innerHTML"
+      hx-indicator="#main-indicator"
+    >
       <label for="username">username</label>
       <input type="text" id="username" name="username" required />
 
@@ -24,6 +29,7 @@
         hx-target="section"
         hx-swap="outerHTML"
         style="cursor: pointer; color:blue"
+        hx-indicator="#main-indicator"
       >register</a>
     </div>
   </div>
