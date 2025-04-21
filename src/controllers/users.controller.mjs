@@ -1,10 +1,14 @@
 import { User } from "../models/user.model.mjs";
+import bcrypt from "bcrypt"
 
 const createUser = async (req, res) => {
   try {
+    const saltRounds = 8;
+    const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+
     const newUser = new User({
       username: req.body.username,
-      password: req.body.password,
+      password: hashedPassword,
     });
     await newUser.save();
     res.render("partials/login-form");
